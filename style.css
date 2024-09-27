@@ -1,0 +1,844 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+carvo-bubble blue-bubble-header {
+    background-color: white;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-start;  /* Align logo to the left */
+    }
+
+
+
+
+/* Hero Section */
+.carvo-hero-section {
+    text-align: center;
+    padding: 50px 20px;
+  
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+.hero-background-video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.hero-background-video video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+.carvo-hero-text h1 {
+    font-size: 90pt;  /* Increase the font size to 90pt */
+    color: white;
+    margin: 0;
+    font-weight: bold;
+    line-height: 1.0;  /* Adjust line height to ensure proper spacing */
+}
+
+
+/* iMessage Bubble Effect */
+/* iMessage Bubble Effect with Responsive Width */
+.carvo-bubble {
+    background-color: #00CCFF;
+    padding: 30px 60px;
+    display: inline-block;
+    border-radius: 60px;
+    margin: 0 auto;
+    width: 100%;  /* Use full width available */
+    max-width: 1100px;  /* Ensure it has enough width for large country names */
+    height: 180px;  /* Adjust height to accommodate the larger font size */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    text-align: center;
+    position: relative;
+    overflow: hidden;  /* Hide the text when it slides out */
+}
+
+.carvo-bubble h1 {
+    font-size: 90pt;  /* Set the font size for both "BOOK" and the country name */
+    color: white;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+}
+
+/* This is the part that animates the country name */
+#carvo-dynamic-country {
+    display: inline-block;
+    position: relative;
+    animation: slideUpDown 2s infinite;  /* Slide the country text */
+}
+
+#carvo-dynamic-country::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;  /* Adjust this value to align with your design */
+    left: 0;
+    width: 100%;
+    height: 5px;  /* Height of the underline */
+    background-color: white;  /* Color of the underline */
+}
+
+/* Slide Up and Down Animation */
+@keyframes slideUpDown {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start below */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);  /* In the center */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px); /* Slide out above */
+    }
+}
+
+
+.carvo-sub-heading {
+    font-size: 20pt;  /* Increase font size to match your mockup */
+    margin: 20px 0;
+    color: #333;       /* Ensure the color stays the same */
+}
+.carvo-listing-message {
+    font-size: 20pt;  /* Adjust font size to match your mockup */
+    color: #333;
+    margin: 20px 0;
+}
+
+
+/* Unified Date Input Box */
+/* Styling for the date input box */
+.carvo-date-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 40px;
+    padding: 15px;
+    width: 1200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    margin: 20px auto;
+    position: relative;
+}
+
+/* General styling for date input */
+.carvo-date-inputs input {
+    border: none;
+    font-size: 18px;
+    color: #333; /* Ensure the text color is visible */
+    padding: 10px;
+    width: 50%;
+    background-color: white !important; /* Ensure background stays white */
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+/* iOS-specific styling */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .carvo-date-inputs input {
+        -webkit-appearance: none; /* Remove default iOS styling */
+        appearance: none;
+        background-color: white !important; /* Force white background */
+        color: #333 !important; /* Force dark text color */
+        padding: 12px; /* Add padding for iOS-specific adjustments */
+        border-radius: 40px; /* Keep the rounded look */
+    }
+
+    /* Optional: Remove extra shadow on focus */
+    .carvo-date-inputs input:focus {
+        box-shadow: none !important;
+    }
+}
+
+
+
+
+/* Stop input box from turning grey when clicked */
+.carvo-date-inputs input:focus {
+    background-color: white !important; /* Keeps background white on focus */
+    /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);  Optional focus glow */
+}
+
+
+/* Styling for the blue "Enter" button */
+.carvo-submit-btn {
+    background-color: #58a9ff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: none; /* Initially hidden and takes no space */
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+    visibility: hidden; /* Hide initially */
+}
+
+/* Show the button with display and fade-in */
+.carvo-submit-btn.show {
+    display: inline-block; /* Takes up space when shown */
+    opacity: 1; /* Fades in */
+    visibility: visible;
+}
+
+
+/* Ensure the input boxes don't move when the button shows up */
+.carvo-date-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 40px;
+    padding: 15px;
+    width: 1200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    margin: 20px auto;
+    position: relative;
+    transition: all 0.5s ease-in-out; /* Add transition for smooth adjustment */
+}
+
+/* Initially visible divider */
+.carvo-divider {
+    width: 2px;
+    background-color: #ddd; /* Grey divider */
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    visibility: visible; /* Ensure it's visible initially */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s; /* Fade-out effect */
+}
+
+/* Fade out when dates are selected */
+.carvo-divider.fade-out {
+    opacity: 0; /* Fully transparent */
+    visibility: hidden; /* Hidden after fading out */
+}
+
+
+.carvo-pickup-return-date {
+    background-color: white;
+    border-radius: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* Responsive adjustments for smaller devices */
+/* For tablets and small laptops (up to 768px wide) */
+@media (max-width: 768px) {
+    .carvo-bubble h1 {
+        font-size: 48pt;  /* Reduce the font size for the "BOOK [Country]" */
+    }
+}
+
+/* For mobile devices (up to 480px wide) */
+@media (max-width: 480px) {
+    .carvo-bubble h1 {
+        font-size: 36pt;  /* Further reduce font size for mobile devices */
+    }
+
+}
+
+/* Responsive design for mobile  for enter button for date*/
+@media (max-width: 768px) {
+    .carvo-date-inputs {
+        flex-direction: column;
+        width: auto;
+    }
+
+    .carvo-submit-btn {
+        display: inline-block;
+        opacity: 1; /* Always visible on mobile */
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .carvo-date-inputs input {
+        width: 100%; /* Full width for mobile */
+        margin-bottom: 10px;
+    }
+
+    .carvo-divider {
+        display: none; /* Hide the divider on mobile */
+    }
+}
+/* Styling for the blue "Enter" button */
+.carvo-submit-btn {
+    background-color: #58a9ff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out; /* Elegant fade-in effect */
+    visibility: hidden; /* Hide initially */
+}
+
+.carvo-submit-btn.show {
+    opacity: 1; /* Fades in */
+    visibility: visible;
+}
+
+
+/* Car Icons (Carousel) */
+.carvo-car-icons {
+    width: 280px;  /* Adjust width for 3 logos (3 * 60px width + spacing) */
+    overflow: hidden;  /* Hide overflow to only show 3 logos */
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;  /* Smooth sliding */
+}
+
+.carousel img {
+    width: 60px;  /* Ensure all logos are 60px wide */
+    height: auto;
+    margin: 0 10px;  /* Add some space between the logos */
+}
+
+
+
+.carvo-earnings-calculator-btn:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .carvo-hero-text h1 {
+        font-size: 48px;
+    }
+
+    .carvo-car-icons img {
+        width: 50px;
+    }
+
+    .carvo-sub-heading {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carvo-hero-text h1 {
+        font-size: 36px;
+    }
+
+
+    .carvo-divider {
+        display: none;
+    }
+
+    .carvo-car-icons img {
+        width: 40px;
+    }
+}
+
+/* For mobile devices (up to 480px wide) on the date form */
+@media (max-width: 480px) {
+    .carvo-date-inputs {
+        flex-direction: column;  /* Stack the date inputs vertically */
+        width: auto;             /* Full width for mobile */
+        padding: 10px;           /* Reduce padding for mobile */
+    }
+
+    .carvo-date-inputs input {
+        width: 100%;             /* Make the inputs take the full width */
+        margin-bottom: 10px;      /* Add some space between the two inputs */
+        font-size: 16px;          /* Reduce the font size */
+        padding: 10px;            /* Adjust padding */
+    }
+
+    .carvo-divider {
+        display: none;  /* Hide the divider between the date fields on mobile */
+    }
+    
+}
+/* General form styling */
+#signup-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.steps-indicator {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.steps-indicator span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 5px;
+    background: #eee;
+    border-radius: 50%;
+    color: #333;
+    cursor: pointer;
+}
+
+.steps-indicator span.active {
+    background: #0073e6;
+    color: white;
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    background: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #005bb5;
+}
+
+.prev-btn {
+    background: #f4f4f4;
+    color: #333;
+    margin-right: 4%;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+    #signup-form {
+        width: 90%;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .prev-btn {
+        margin-right: 0;
+    }
+    .profile{
+        display: none; /* Hide profile button in mobile */
+    }
+}
+
+/* Carvo Steps Section */
+.carvo-steps-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 10px; /* Optional rounded corners */
+}
+
+/* Step Container */
+.carvo-steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Each Step */
+.carvo-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+
+.carvo-step-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Step Text */
+.carvo-step-text {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Link Styling */
+.carvo-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+    .carvo-steps-container {
+        flex-direction: column;
+    }
+
+    .carvo-step {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/*Advanced form and calculator styling*/
+
+
+/* Container for side-by-side layout */
+.side-by-side-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+    margin: 50px auto;
+}
+
+
+
+/* Calculator Section - Keep existing styles */
+.calculator-section {
+    flex: 1; /* Ensure equal space with signup form */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+/* Add padding to the right for desktop screens */
+@media screen and (min-width: 768px) {
+    .calculator-section {
+        margin-left: 150px; /* Adjust the padding as needed */
+    }
+}
+/* Signup Form Section - Custom class to avoid conflicts */
+.signup-section {
+    flex: 1; /* Ensure equal space with calculator section */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+
+/* Form Input Styling */
+.calculator-form label, .signup-section label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+}
+
+.calculator-input, .signup-section input, .signup-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Button Styling - Same for both calculator and signup */
+.calculator-button, .signup-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6; /* Same blue as form buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.calculator-button:hover, .signup-section button:hover {
+    background-color: #005bb5;
+    transform: translateY(-3px); /* Button lift on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .side-by-side-container {
+        flex-direction: column; /* Stacks the sections vertically on smaller screens */
+    }
+
+    .calculator-section, .signup-section {
+        max-width: 100%; /* Full width on mobile */
+    }
+}
+
+/*Table Styling*/
+/* General table styling */
+.comparison-table {
+    width: 100%;
+    max-width: 900px; /* Limit the table width for better centering */
+    margin: 0 auto;   /* Center the table horizontally */
+    font-family: 'Helvetica', Arial, sans-serif; /* Use Helvetica or fallback fonts */
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+/* Styling the header */
+.comparison-table th {
+    text-align: left;
+    font-size: 22px; /* Header font size */
+    font-weight: 900; /* Bold font weight for headers */
+    padding-bottom: 15px;
+    color: #000; /* Black for the headers */
+}
+
+.comparison-table th:nth-child(2),
+.comparison-table th:nth-child(3) {
+    text-align: center; /* Center align Carvo and Competitors */
+}
+
+/* Row and cell styling */
+.comparison-table td {
+    padding: 25px 15px; /* Increase padding for more spacing */
+    vertical-align: top;
+    border-bottom: 1px solid #e0e0e0; /* Subtle horizontal lines */
+    color: #333;
+    font-size: 16px; /* Base font size for body text */
+    line-height: 1.6; /* Ensure readability with better line spacing */
+}
+
+/* Center checkmarks and crosses */
+.comparison-table td:nth-child(2),
+.comparison-table td:nth-child(3) {
+    text-align: center;
+    font-size: 24px; /* Adjust size for the icons */
+}
+
+/* Styling for the strong titles */
+.comparison-table strong {
+    font-size: 20px; /* Increased headline size */
+    font-weight: 900; /* Bold font weight for headings */
+    display: block;
+    margin-bottom: 8px;
+    color: #000; /* Black for titles */
+}
+
+/* Styling for the descriptive text */
+.comparison-table span {
+    font-size: 18px; /* Larger descriptive text size */
+    font-weight: 300; /* Light font weight for descriptive text */
+    line-height: 1.8; /* Add more spacing for readability */
+    color: #666; /* Soft gray color */
+    display: block; /* Ensure the text wraps properly */
+    word-wrap: break-word;
+}
+
+/* Adding more space between table rows */
+.comparison-table tr {
+    margin-bottom: 25px;
+}
+
+/* Styling for checkmarks and crosses */
+.comparison-table td:contains("✔️") {
+    color: green; /* Green checkmarks */
+}
+
+.comparison-table td:contains("❌") {
+    color: red; /* Red crosses */
+}
+
+/* Responsive table for mobile */
+@media (max-width: 768px) {
+    .comparison-table {
+        padding: 0 20px; /* Add padding on mobile for better spacing */
+    }
+
+    .comparison-table table {
+        font-size: 14px;
+    }
+
+    .comparison-table td,
+    .comparison-table th {
+        padding: 10px 5px;
+    }
+
+    .comparison-table td:nth-child(2),
+    .comparison-table td:nth-child(3) {
+        font-size: 18px;
+    }
+}
+
+/* More responsive spacing on mobile */
+@media (max-width: 480px) {
+    .comparison-table td,
+    .comparison-table th {
+        padding: 8px 5px;
+    }
+
+    .comparison-table strong {
+        font-size: 16px;
+    }
+
+    .comparison-table span {
+        font-size: 14px;
+    }
+}
+
+/*ensures theres balanced padding for forms and text rows on laptops*/
+@media screen and (min-width: 728px) {
+    .earnings-row-class {
+        margin-left: 100px !important; /* Adds 100px margin to the left with higher priority */
+    }
+}
+
+@media screen and (min-width: 728px) {
+    .list-car-row {
+        padding-right: 150px !important; /* Adds 200px margin to the left with higher priority */
+    }
+}
+
+/* Stats Section Styles */
+.carvo-stats-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.stat-item {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.stat-item h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+      color: white;
+}
+
+.stat-item p {
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .carvo-stats-section {
+        flex-direction: column;
+    }
+
+    .stat-item {
+        margin-bottom: 20px;
+    }
+}
+
+#custom-raw-html-head .wpb_content_element {
+    margin-bottom: 0px !important; /* Applies only to elements in this specific row */
+}
+
+/* profile button Section */
+.profile{
+    position: relative;
+}
+.profile .profilebutton{
+    display: flex ;
+    gap: 3px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 40px;
+    width: 100px;
+    padding: 2px 10px;
+    border: 1px solid gainsboro;
+    color: rgb(136, 124, 124);
+font-size: 1.3rem;
+cursor: pointer;
+
+}
+
+.profile .profilebutton:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.profile .profilebutton span:nth-child(2){
+  padding:2px 10px;
+  background-color: #00CCFF;
+  border-radius: 100%;
+  color: white;
+}
+.profile .button-nav{
+    position: absolute;
+    width: 200px;
+    right: 0;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    transition: 0.3s;
+    transform: scaleY(0);
+    transform-origin:top ;
+
+}
+.profile .button-nav.active{
+    transform: scaleY(100%);
+}
