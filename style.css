@@ -29,21 +29,8 @@ carvo-bubble blue-bubble-header {
     width: 100%;
     position: relative;
 }
-.hero-background-video{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-.hero-background-video video{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-}
+
+
 .carvo-hero-text h1 {
     font-size: 90pt;  /* Increase the font size to 90pt */
     color: white;
